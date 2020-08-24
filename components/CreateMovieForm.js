@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const CreateMovieForm = ({handleFormSubmit, initialData}) => {
+    const [initialDataLoaded, setInitialDataLoaded] = useState(false);
     const [form, setForm] = useState({
         name: "",
         releaseYear: "",
@@ -10,10 +11,14 @@ const CreateMovieForm = ({handleFormSubmit, initialData}) => {
         image: "",
         imageCover: "",
     });
+    console.log({initialData})
 
     useEffect(() => {
-        
-    })
+        if (initialData) {
+            setForm(initialData)
+            setInitialDataLoaded(true);
+        }
+    }, [initialDataLoaded])
 
     const handleChange = (event) => {
         const { target } = event
@@ -45,7 +50,6 @@ const CreateMovieForm = ({handleFormSubmit, initialData}) => {
     }
     return(
         <form>
-            { JSON.stringify(form)}
             <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
