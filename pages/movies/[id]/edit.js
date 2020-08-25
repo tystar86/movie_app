@@ -3,26 +3,17 @@ import CreateMovieForm from "../../../components/CreateMovieForm";
 import { getMovieByID } from '../../../actions';
 
 class EditMovie extends Component {
-    static getInitialProps({query}) {
-        return {query}
+    static async getInitialProps({query}) {
+        const movie = await getMovieByID(query.id)
+        return { movie }
     }
 
-    state = {
-        movie: {}
-    }
-
-    componentDidMount() {
-        const { id } = this.props.query;
-        getMovieByID(id).then((movie) => {
-            this.setState({movie})
-        })
-    }
     render() {
         return(
             <div className="container">
                 <h1>Edit movie</h1>
-                {JSON.stringify(this.state.movie)}
-                <CreateMovieForm initialData={this.state.movie}/>
+                {JSON.stringify(this.props.movie)}
+                <CreateMovieForm initialData={this.props.movie}/>
             </div>
         )
     }
