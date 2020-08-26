@@ -1,6 +1,7 @@
 import { Component } from "react";
 import CreateMovieForm from "../../../components/CreateMovieForm";
-import { getMovieByID } from '../../../actions';
+import { getMovieByID, updateMovie } from '../../../actions';
+import Router from 'next/router';
 
 class EditMovie extends Component {
     static async getInitialProps({query}) {
@@ -8,12 +9,18 @@ class EditMovie extends Component {
         return { movie }
     }
 
+    handleUpdateMovie(movie) {
+        updateMovie(movie).then((movie) => {
+        //    modal.closeModal()
+            Router.push('/movies/[id]', `/movies/${movie.id}`)
+        })
+    }
+
     render() {
         return(
             <div className="container">
                 <h1>Edit movie</h1>
-                {JSON.stringify(this.props.movie)}
-                <CreateMovieForm initialData={this.props.movie}/>
+                <CreateMovieForm initialData={this.props.movie} handleFormSubmit={this.handleUpdateMovie} submitButtonText="Update"/>
             </div>
         )
     }

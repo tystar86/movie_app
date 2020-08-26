@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CreateMovieForm = ({handleFormSubmit, initialData}) => {
+const CreateMovieForm = ({handleFormSubmit, initialData, submitButtonText}) => {
     const formData = initialData ? {...initialData} : {
         name: "",
         releaseYear: "",
@@ -127,7 +127,7 @@ const CreateMovieForm = ({handleFormSubmit, initialData}) => {
                 <option>action</option>
                 </select>
             </div>
-            <button type="button" onClick={submitForm} className="btn btn-primary">Create</button>
+            <button type="button" onClick={submitForm} className="btn btn-primary">{submitButtonText}</button>
         </form>
     )
 };

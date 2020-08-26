@@ -41,10 +41,23 @@ app.prepare().then(() => {
     })
   })
 
-  // server.patch('/api/movies/:id', (req, res) => {
-  //   const movieID = req.params.id
-  //   return res.json(movie)
-  // })
+  server.patch('/api/movies/:id', (req, res) => {
+    const movie = req.body
+    const movieID = req.params.id
+    const movieIndex = moviesData.findIndex(movie => movie.id == movieID)
+    
+    moviesData[movieIndex] = movie
+
+    const pathToFile = path.join(__dirname, filePath)
+    const stringyfiedData = JSON.stringify(moviesData, null, 2)
+
+    fs.writeFile(pathToFile, stringyfiedData, (error) => {
+      if (error) {
+        return res.status(422).send(error)
+      }
+      return res.json(movie)
+    })
+  })
 
   server.delete('/api/movies/:id', (req, res) => {
     const movieID = req.params.id
@@ -61,10 +74,6 @@ app.prepare().then(() => {
       return res.json('Movie has been successfully deleted.')
     })
   })
-
-//   server.get('/api/faq', (req, res) => {
-//     return res.send("<html><h1>FAQ</h1></html>")
-//   })
 
   server.get('*', (req, res) => {
     return handle(req, res)

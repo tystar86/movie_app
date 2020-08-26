@@ -7,12 +7,16 @@ import MovieList from '../components/MovieList';
 import { getMovies, getCategories } from '../actions';
 
 const Home = ({movies, images, categories}) => {
+  const changeCategory = (category) => {
+    alert(`changing category to ${category}`)
+  }
+
   return(
     <div>
         <div className="home-page">
             <div className="container">
                 <div className="row">
-                    <Sidemenu categories={categories || []}/>
+                    <Sidemenu categories={categories || []} changeCategory={changeCategory}/>
                     <div className="col-lg-9">
                         <Carousel  images={images || []}/>
                         <MovieList movies={movies || []}/>

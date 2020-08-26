@@ -32,6 +32,12 @@ export const createMovie = (movie) => {
   })
 }
 
+export const updateMovie = (movie) => {
+  return axios.patch(`${BASE_URL}/api/movies/${movie.id}`, movie).then((response) => {
+    return response.data
+  })
+}
+
 export const deleteMovie = (movieID) => {
   return axios.delete(`${BASE_URL}/api/movies/${movieID}`).then((response) => {
     response.data
