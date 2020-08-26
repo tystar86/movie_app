@@ -21,7 +21,7 @@ class MovieList extends Component {
                         <h4 className="card-title">
                             <Link href="/movies/[id]" as={`movies/${movie.id}`}><a>{movie.name}</a></Link>
                         </h4>
-                        <h5>{movie.genre}</h5>
+                        <h5 className="movie-category">{movie.category}</h5>
                         <h5>{movie.releaseYear}</h5>
                         <p className="card-text">{this.shortenText(movie.description, 200)}</p>
                     </div>

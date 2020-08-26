@@ -3,7 +3,7 @@ import CreateMovieForm from './CreateMovieForm';
 import { createMovie } from '../actions';
 import { useRouter } from 'next/router';
 
-const Sidemenu = ({categories, changeCategory}) => {
+const Sidemenu = ({categories, changeCategory, activeCategory}) => {
     let modal = null
     const router = useRouter()
     const handleCreateMovie = (movie) => {
@@ -13,16 +13,20 @@ const Sidemenu = ({categories, changeCategory}) => {
         })
     }
 
-
     return(
         <div className="col-lg-3">
             <Modal ref={element => modal = element} hasSubmit={false}>
                 <CreateMovieForm handleFormSubmit={handleCreateMovie} submitButtonText="Create"/>
             </Modal>
-            <h1 className="my-4">TMDB</h1>
             <div className="list-group">
               { categories.map(category =>
-                (<a onClick={() => changeCategory(category.name)} href="#" className="list-group-item" key={category.id}>{category.name}</a>)
+                (
+                    <a onClick={() => changeCategory(category.name)}
+                        href="#"
+                        className={`list-group-item ${activeCategory === category.name ? 'active' : ''}`}
+                        key={category.id}>
+                    {category.name}
+                    </a>)
                 )}
             </div>
         </div>

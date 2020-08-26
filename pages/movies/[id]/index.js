@@ -16,7 +16,7 @@ const Movie = (props) => {
             <div className="jumbotron">
                 <h1 className="display-4">{movie.name}</h1>
                 <p className="lead">{movie.description}</p>
-                <p>{movie.genre}</p>
+                <p>{movie.category}</p>
                 <button className="btn btn-primary btn-lg mr-1" href="#" role="button">Learn more...</button>
                 <button onClick={() => handleDeleteMovie(movie.id)} className="btn btn-danger btn-lg mr-1" href="#" role="button">Delete movie</button>
                 <Link href="/movies/[id]/edit" as={`/movies/${movie.id}/edit`}>

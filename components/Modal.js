@@ -19,7 +19,7 @@ class Modal extends Component {
     render() {
         return(
             <div>
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="btn btn-primary mt-4 mb-3" data-toggle="modal" data-target="#exampleModal">
                 Create Movie
                 </button>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

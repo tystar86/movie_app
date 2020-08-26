@@ -19,7 +19,7 @@ const CreateMovieForm = ({handleFormSubmit, initialData, submitButtonText}) => {
             [target.name]: target.value
         })
     };
-    const handleGenreChange = (event) => {
+    const handleCategoryChange = (event) => {
         const { options } = event.target;
         const optionsLength = options.length;
         let values = [];
@@ -32,7 +32,7 @@ const CreateMovieForm = ({handleFormSubmit, initialData, submitButtonText}) => {
 
         setForm({
             ...form,
-            genre : values.toString()
+            category : values.toString()
         })
     };
 
@@ -118,8 +118,8 @@ const CreateMovieForm = ({handleFormSubmit, initialData, submitButtonText}) => {
                 </textarea>
             </div>
             <div className="form-group">
-                <label htmlFor="genre">Genre</label>
-                <select multiple className="form-control" id="genre" onChange={handleGenreChange}>
+                <label htmlFor="category">Category</label>
+                <select multiple className="form-control" id="category" onChange={handleCategoryChange}>
                 <option>drama</option>
                 <option>music</option>
                 <option>adventure</option>
