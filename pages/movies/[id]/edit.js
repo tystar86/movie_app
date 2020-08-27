@@ -11,7 +11,7 @@ class EditMovie extends Component {
 
     handleUpdateMovie(movie) {
         updateMovie(movie).then((movie) => {
-        //    modal.closeModal()
+        //    TODO: modal.closeModal()
             Router.push('/movies/[id]', `/movies/${movie.id}`)
         })
     }

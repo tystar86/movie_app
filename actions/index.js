@@ -53,3 +53,7 @@ export const getCategories = () => {
       }, 50)
   })
 }
+
+export const getPosts = () => {
+  return axios.get(`${BASE_URL}/api/posts`).then(response => response.data)
+}

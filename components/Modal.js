@@ -1,6 +1,4 @@
 import { Component } from "react";
-import { render } from "react-dom";
-
 
 class Modal extends Component {
     constructor(props) {
